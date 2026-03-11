@@ -1,58 +1,68 @@
 <!DOCTYPE html>
-
 <html lang="en">
     <head>
         <title>POPCAT CLASSIC</title>
         <style>
             body {
                 margin: 0;
-                padding: 0;
                 font-family: sans-serif;
+                user-select: none;
             }
             .container {
                 height: 100vh;
                 display: flex;
                 flex-direction: column;
                 align-items: center; /* 水平置中 */
-                justify-content: flex-start; /* 不進行垂直置中 */
                 background-color: #bdaa90;
             }
-            .container img {
+            .tittle {
                 width: 80%;
-                max-width: 600px;
                 margin-top: 2em;
+                max-width: 600px;
             }
-            #counter {
+            .cat-img {
                 width: 100%;
-                max-width: 800px;
                 flex: 1;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                max-width: 800px;
                 text-align: center;
-                color: white;
+                color: #ffffff;
                 font-size: 80px;
-                -webkit-text-stroke: 3px black;
-                background: url('imgs/p.png') no-repeat center bottom;
+                -webkit-text-stroke: 3px #000000;
+            }
+            #p {
+                background-image: url("imgs/p.png");
+                background-position: bottom;
                 background-size: contain;
-                user-select: none;
-                -webkit-user-select: none;
-                -moz-user-select: none;
+                background-repeat: no-repeat;
             }
             #op {
-                width: 100%;
-                height: 100px;
-                background: url('imgs/op.png') no-repeat center center;
+                background-image: url("imgs/op.png");
+                background-position: bottom;
                 background-size: contain;
+                background-repeat: no-repeat;
             }
         </style>
     </head>
-
     <body>
         <div class="container">
-            <img src="imgs/popcat.svg" alt="POPCAT">
-            <div id="counter">0</div>
-            <div id="op"></div>
+            <img class="tittle" src="imgs/popcat.svg" alt="POPCAT CLASSIC">
+            <div class="cat-img" id="p">0</div>
         </div>
+        <script>  
+            let count = 0;
+            let catImg = document.getElementById("p");
+            function addCount() {
+                count++;
+                catImg.innerHTML = count;
+                catImg.id = "op";
+            }
+
+            let close = () => {
+                catImg.id = "p";
+            }
+
+            document.addEventListener("pointerdown", addCount);
+            document.addEventListener("pointerup", close);
+        </script>
     </body>
 </html>
